@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lic. Laura Benítez — Nutrición clínica y deportiva</title>
+<meta name="description" content="Nutrición clínica y deportiva con Lic. Laura Benítez. Consultas, planes personalizados y seguimiento.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#1F3D2B;
+    --forest-2:#2E5138;
+    --sage:#6B8F71;
+    --leaf:#A8C99B;
+    --cream:#FAF8F3;
+    --cream-2:#F1EDE2;
+    --ink:#1C2620;
+    --ink-soft:#4A5A4F;
+    --white:#FFFFFF;
+    --line:#DDE3D6;
+    --radius-card: 18px;
+    --radius-pill: 999px;
+    --max: 1100px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Inter', -apple-system, sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Manrope', sans-serif;
+    color:var(--forest);
+    line-height:1.15;
+    font-weight:800;
+    letter-spacing:-0.01em;
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit;}
+
+  .wrap{
+    max-width:var(--max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .visually-hidden{
+    position:absolute; width:1px; height:1px;
+    overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:rgba(250,248,243,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:1.05rem;
+    color:var(--forest);
+  }
+  .brand span{color:var(--sage);}
+  .nav-link{
+    font-size:0.95rem;
+    font-weight:600;
+    color:var(--forest);
+    padding:10px 18px;
+    border:1.5px solid var(--forest);
+    border-radius:var(--radius-pill);
+    transition:background 0.15s ease, color 0.15s ease;
+  }
+  .nav-link:hover{background:var(--forest); color:var(--white);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    color:var(--white);
+    background:linear-gradient(155deg, var(--forest) 0%, var(--forest-2) 45%, var(--sage) 100%);
+    overflow:hidden;
+    padding:120px 0 64px;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    right:-120px; top:-100px;
+    width:380px; height:380px;
+    border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, rgba(168,201,155,0.35), transparent 70%);
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    left:-140px; bottom:-160px;
+    width:420px; height:420px;
+    border-radius:50%;
+    background:radial-gradient(circle at 60% 40%, rgba(255,255,255,0.08), transparent 70%);
+  }
+  .hero .wrap{position:relative; z-index:2;}
+
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.85rem; font-weight:600;
+    color:var(--leaf);
+    margin-bottom:22px;
+    opacity:0; transform:translateY(10px);
+    animation:riseIn 0.7s ease forwards;
+    animation-delay:0.05s;
+  }
+  .hero-eyebrow svg{width:18px; height:18px; flex-shrink:0;}
+
+  .hero h1{
+    font-size:clamp(2.4rem, 9vw, 4.6rem);
+    color:var(--white);
+    max-width:11ch;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn 0.75s ease forwards;
+    animation-delay:0.18s;
+  }
+
+  .hero-specialty{
+    margin-top:20px;
+    font-size:clamp(1.05rem, 4vw, 1.35rem);
+    color:rgba(255,255,255,0.85);
+    max-width:34ch;
+    font-weight:500;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn 0.75s ease forwards;
+    animation-delay:0.32s;
+  }
+
+  .hero-cta{
+    margin-top:40px;
+    display:flex; flex-wrap:wrap; gap:16px;
+    opacity:0; transform:translateY(14px);
+    animation:riseIn 0.75s ease forwards;
+    animation-delay:0.46s;
+  }
+
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:16px 30px;
+    border-radius:var(--radius-pill);
+    font-weight:700;
+    font-size:1rem;
+    cursor:pointer;
+    border:none;
+    transition:transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  }
+  .btn:active{transform:scale(0.98);}
+  .btn-primary{
+    background:var(--white);
+    color:var(--forest);
+  }
+  .btn-primary:hover{box-shadow:0 8px 24px rgba(0,0,0,0.18);}
+  .btn-outline{
+    background:transparent;
+    color:var(--white);
+    border:1.5px solid rgba(255,255,255,0.55);
+  }
+  .btn-outline:hover{background:rgba(255,255,255,0.12);}
+
+  @keyframes riseIn{
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .hero-scroll{
+    position:absolute; bottom:28px; left:0; right:0;
+    display:flex; justify-content:center;
+    opacity:0.7;
+    z-index:2;
+  }
+  .hero-scroll svg{width:20px; height:20px; animation:bob 2s ease-in-out infinite;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(6px);}
+  }
+
+  /* ---------- SECTION BASE ---------- */
+  section{padding:88px 0;}
+  .section-tag{
+    font-size:0.9rem;
+    font-weight:700;
+    color:var(--sage);
+    margin-bottom:12px;
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .about-photo{
+    width:150px; height:150px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--leaf), var(--sage));
+    display:flex; align-items:center; justify-content:center;
+    color:var(--white);
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:2.4rem;
+    justify-self:start;
+    box-shadow:0 12px 32px rgba(31,61,43,0.18);
+  }
+  .about h2{font-size:clamp(1.7rem, 5vw, 2.4rem); margin-bottom:18px;}
+  .about p{color:var(--ink-soft); font-size:1.05rem; max-width:56ch;}
+  .about p + p{margin-top:14px;}
+
+  /* ---------- SERVICIOS ---------- */
+  .services-head{max-width:52ch; margin-bottom:48px;}
+  .services-head h2{font-size:clamp(1.7rem, 5vw, 2.4rem);}
+  .services-head p{color:var(--ink-soft); margin-top:14px; font-size:1.05rem;}
+
+  .service-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .service-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:var(--radius-card);
+    padding:32px 28px;
+    border-left:4px solid var(--sage);
+  }
+  .service-card:nth-child(2){border-left-color:var(--forest);}
+  .service-card:nth-child(3){border-left-color:var(--leaf);}
+  .service-card .icon{
+    width:44px; height:44px;
+    border-radius:12px;
+    background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .service-card .icon svg{width:22px; height:22px; color:var(--forest);}
+  .service-card h3{font-size:1.2rem; margin-bottom:10px;}
+  .service-card p{color:var(--ink-soft); font-size:0.98rem;}
+
+  /* ---------- CONTACTO ---------- */
+  .contact{
+    background:var(--cream-2);
+  }
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:44px;
+  }
+  .contact-info h2{font-size:clamp(1.7rem, 5vw, 2.2rem);}
+  .contact-info p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem; max-width:44ch;}
+  .contact-details{margin-top:28px; display:flex; flex-direction:column; gap:16px;}
+  .contact-detail{
+    display:flex; align-items:center; gap:12px;
+    font-size:0.98rem; font-weight:600;
+    color:var(--forest);
+  }
+  .contact-detail svg{width:20px; height:20px; flex-shrink:0; color:var(--sage);}
+
+  form{
+    background:var(--white);
+    border-radius:var(--radius-card);
+    padding:32px 24px;
+    border:1px solid var(--line);
+  }
+  .field{margin-bottom:20px;}
+  .field label{
+    display:block;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--forest);
+    margin-bottom:8px;
+  }
+  .field input, .field textarea{
+    width:100%;
+    padding:14px 16px;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--cream);
+    font-family:inherit;
+    font-size:0.98rem;
+    color:var(--ink);
+    transition:border-color 0.15s ease;
+  }
+  .field input:focus, .field textarea:focus{
+    outline:none;
+    border-color:var(--sage);
+  }
+  .field textarea{resize:vertical; min-height:110px;}
+  .form-submit{width:100%; background:var(--forest); color:var(--white);}
+  .form-submit:hover{box-shadow:0 8px 24px rgba(31,61,43,0.22);}
+  .form-note{
+    margin-top:14px;
+    font-size:0.85rem;
+    color:var(--ink-soft);
+    text-align:center;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--forest);
+    color:rgba(255,255,255,0.82);
+    padding:48px 0 32px;
+  }
+  .footer-top{
+    display:flex; flex-direction:column; gap:24px;
+    align-items:flex-start;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .footer-brand{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:1.1rem;
+    color:var(--white);
+  }
+  .footer-links{display:flex; gap:18px; flex-wrap:wrap;}
+  .footer-links a{
+    font-size:0.92rem;
+    color:rgba(255,255,255,0.82);
+    transition:color 0.15s ease;
+  }
+  .footer-links a:hover{color:var(--white);}
+  .footer-bottom{
+    padding-top:22px;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.6);
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;
+  }
+
+  /* ---------- WHATSAPP FLOTANTE ---------- */
+  .wa-float{
+    position:fixed;
+    right:20px; bottom:20px;
+    width:58px; height:58px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    z-index:50;
+    transition:transform 0.15s ease;
+  }
+  .wa-float:hover{transform:scale(1.06);}
+  .wa-float svg{width:30px; height:30px;}
+
+  /* ---------- DESKTOP ---------- */
+  @media (min-width:768px){
+    .about{grid-template-columns:auto 1fr; gap:56px;}
+    .service-grid{grid-template-columns:repeat(3, 1fr);}
+    .contact-grid{grid-template-columns:1fr 1.15fr; gap:60px;}
+    section{padding:120px 0;}
+    .nav .wrap{padding-top:20px; padding-bottom:20px;}
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <span class="brand">Laura Benítez <span>· Nutrición</span></span>
+    <a class="nav-link" href="#contacto">Contactame</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3c-4 3-6 7-6 11a6 6 0 0 0 12 0c0-4-2-8-6-11z"/><path d="M12 8v13"/></svg>
+      Nutrición clínica y deportiva
+    </span>
+    <h1>Lic. Laura Benítez</h1>
+    <p class="hero-specialty">Planes de alimentación pensados para tu cuerpo, tu rutina y tus objetivos — con seguimiento real, no con dietas genéricas.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#contacto">Contactame</a>
+      <a class="btn btn-outline" href="https://wa.me/5491166667777?text=Hola%20Laura%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </div>
+</header>
+
+<section id="sobre-mi">
+  <div class="wrap about">
+    <div class="about-photo" aria-hidden="true">LB</div>
+    <div>
+      <h2>Sobre mí</h2>
+      <p>Soy Laura, licenciada en Nutrición especializada en nutrición clínica y deportiva. Trabajo con personas que quieren mejorar su relación con la comida, rendir mejor en su entrenamiento o resolver una condición de salud puntual, siempre con un enfoque realista y sin dietas mágicas.</p>
+      <p>Creo en los planes hechos a medida: cada cuerpo, cada rutina y cada historia son distintas, y el acompañamiento tiene que adaptarse a eso — no al revés.</p>
+    </div>
+  </div>
+</section>
+
+<section id="servicios" style="background:var(--white);">
+  <div class="wrap">
+    <div class="services-head">
+      <h2>Servicios</h2>
+      <p>Tres formas de empezar a cuidar tu alimentación, según en qué punto estés.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Consulta inicial</h3>
+        <p>Evaluación completa de tus hábitos, historia clínica y objetivos para definir el mejor punto de partida.</p>
+      </article>
+      <article class="service-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6"/></svg>
+        </div>
+        <h3>Plan nutricional personalizado</h3>
+        <p>Un plan de alimentación diseñado según tu rutina, tus gustos y tus objetivos, sin restricciones innecesarias.</p>
+      </article>
+      <article class="service-card">
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+        </div>
+        <h3>Seguimiento mensual</h3>
+        <p>Ajustes periódicos del plan, control de avances y acompañamiento constante para sostener los resultados en el tiempo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" class="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2>Empecemos tu consulta</h2>
+      <p>Contame un poco de tu situación y te respondo a la brevedad para coordinar el primer encuentro.</p>
+      <div class="contact-details">
+        <span class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          <a href="mailto:laura@nutricionbenitez.com">laura@nutricionbenitez.com</a>
+        </span>
+        <span class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2 2a12 12 0 0 0 6 6l2-2 5 2v4a2 2 0 0 1-2 2C10 22 2 14 2 4a2 2 0 0 1 2-2"/></svg>
+          <a href="https://wa.me/5491166667777?text=Hola%20Laura%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">+54 9 11 6666-7777</a>
+        </span>
+        <span class="contact-detail">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <a href="https://instagram.com/laura.nutricion" target="_blank" rel="noopener">@laura.nutricion</a>
+        </span>
+      </div>
+    </div>
+
+    <form action="https://formspree.io/f/xnpqkbgw" method="POST">
+      <div class="field">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="field">
+        <label for="telefono">Teléfono <span style="font-weight:400; color:var(--ink-soft);">(opcional)</span></label>
+        <input type="tel" id="telefono" name="telefono">
+      </div>
+      <div class="field">
+        <label for="motivo">Motivo de consulta</label>
+        <textarea id="motivo" name="motivo" required></textarea>
+      </div>
+      <button type="submit" class="btn form-submit">Enviar consulta</button>
+      <p class="form-note">Te respondo en menos de 48hs hábiles.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <span class="footer-brand">Laura Benítez</span>
+      <div class="footer-links">
+        <a href="mailto:laura@nutricionbenitez.com">laura@nutricionbenitez.com</a>
+        <a href="https://instagram.com/laura.nutricion" target="_blank" rel="noopener">Instagram @laura.nutricion</a>
+        <a href="https://wa.me/5491166667777?text=Hola%20Laura%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Laura Benítez. Todos los derechos reservados.</span>
+      <span>Nutrición clínica y deportiva</span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/5491166667777?text=Hola%20Laura%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.02 3C9.4 3 4 8.4 4 15.02c0 2.36.63 4.57 1.8 6.52L4 29l7.66-1.78a11.96 11.96 0 0 0 4.36.82C22.6 28.04 28 22.64 28 16.02 28 9.4 22.64 3 16.02 3zm0 21.86c-1.5 0-2.98-.4-4.27-1.16l-.3-.18-3.55.83.83-3.46-.2-.31a9.83 9.83 0 0 1-1.53-5.56c0-5.46 4.44-9.9 9.9-9.9 5.46 0 9.9 4.44 9.9 9.9 0 5.46-4.44 9.9-9.9 9.9z"/><path d="M21.3 18.28c-.28-.14-1.64-.81-1.9-.9-.25-.1-.44-.14-.62.14-.19.28-.72.9-.88 1.08-.16.19-.32.21-.6.07-.28-.14-1.18-.43-2.24-1.37-.83-.74-1.39-1.65-1.55-1.93-.16-.28-.02-.43.12-.57.13-.13.28-.32.42-.49.14-.16.19-.28.28-.46.09-.19.05-.35-.02-.49-.07-.14-.62-1.49-.85-2.04-.22-.54-.45-.46-.62-.47h-.53c-.19 0-.49.07-.74.35-.25.28-.97.95-.97 2.3 0 1.36.99 2.68 1.13 2.86.14.19 1.95 2.98 4.73 4.18.66.28 1.18.45 1.58.58.66.21 1.27.18 1.75.11.53-.08 1.64-.67 1.87-1.32.23-.65.23-1.2.16-1.32-.07-.12-.25-.19-.53-.33z"/></svg>
+</a>
+
+</body>
+</html>
