@@ -7,7 +7,7 @@
 <meta name="description" content="Nutrición clínica y deportiva con Lic. Laura Benítez. Consultas, planes personalizados y seguimiento.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
     --forest:#1F3D2B;
@@ -37,12 +37,32 @@
     -webkit-font-smoothing:antialiased;
   }
 
-  h1,h2,h3{
-    font-family:'Manrope', sans-serif;
+  h2,h3{
+    font-family:'Fraunces', serif;
     color:var(--forest);
     line-height:1.15;
-    font-weight:800;
+    font-weight:600;
     letter-spacing:-0.01em;
+  }
+
+  h2 em, h3 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--sage);
+  }
+
+  .eyebrow{
+    display:flex; align-items:center; gap:10px;
+    font-size:0.82rem; font-weight:700;
+    letter-spacing:0.06em;
+    color:var(--sage);
+    margin-bottom:16px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px; height:1.5px;
+    background:var(--sage);
+    display:block;
   }
 
   a{color:inherit; text-decoration:none;}
@@ -136,6 +156,10 @@
   .hero-eyebrow svg{width:18px; height:18px; flex-shrink:0;}
 
   .hero h1{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    line-height:1.15;
+    letter-spacing:-0.01em;
     font-size:clamp(2.4rem, 9vw, 4.6rem);
     color:var(--white);
     max-width:11ch;
@@ -230,13 +254,13 @@
     justify-self:start;
     box-shadow:0 12px 32px rgba(31,61,43,0.18);
   }
-  .about h2{font-size:clamp(1.7rem, 5vw, 2.4rem); margin-bottom:18px;}
+  .about h2{font-size:clamp(1.8rem, 5vw, 2.5rem); margin-bottom:18px;}
   .about p{color:var(--ink-soft); font-size:1.05rem; max-width:56ch;}
   .about p + p{margin-top:14px;}
 
   /* ---------- SERVICIOS ---------- */
   .services-head{max-width:52ch; margin-bottom:48px;}
-  .services-head h2{font-size:clamp(1.7rem, 5vw, 2.4rem);}
+  .services-head h2{font-size:clamp(1.8rem, 5vw, 2.5rem);}
   .services-head p{color:var(--ink-soft); margin-top:14px; font-size:1.05rem;}
 
   .service-grid{
@@ -249,10 +273,8 @@
     border:1px solid var(--line);
     border-radius:var(--radius-card);
     padding:32px 28px;
-    border-left:4px solid var(--sage);
+    box-shadow:0 4px 20px rgba(31,61,43,0.05);
   }
-  .service-card:nth-child(2){border-left-color:var(--forest);}
-  .service-card:nth-child(3){border-left-color:var(--leaf);}
   .service-card .icon{
     width:44px; height:44px;
     border-radius:12px;
@@ -261,8 +283,20 @@
     margin-bottom:18px;
   }
   .service-card .icon svg{width:22px; height:22px; color:var(--forest);}
-  .service-card h3{font-size:1.2rem; margin-bottom:10px;}
-  .service-card p{color:var(--ink-soft); font-size:0.98rem;}
+  .service-card h3{font-family:'Fraunces', serif; font-weight:600; font-size:1.2rem; margin-bottom:14px;}
+  .service-card ul{list-style:none; display:flex; flex-direction:column; gap:10px;}
+  .service-card li{
+    display:flex; align-items:baseline; gap:10px;
+    color:var(--ink-soft); font-size:0.95rem;
+  }
+  .service-card li::before{
+    content:"";
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--sage);
+    flex-shrink:0;
+    transform:translateY(-2px);
+  }
 
   /* ---------- CONTACTO ---------- */
   .contact{
@@ -273,21 +307,43 @@
     grid-template-columns:1fr;
     gap:44px;
   }
-  .contact-info h2{font-size:clamp(1.7rem, 5vw, 2.2rem);}
+  .contact-info h2{font-size:clamp(1.9rem, 6vw, 2.6rem);}
   .contact-info p{color:var(--ink-soft); margin-top:14px; font-size:1.02rem; max-width:44ch;}
-  .contact-details{margin-top:28px; display:flex; flex-direction:column; gap:16px;}
+  .contact-details{margin-top:28px; display:flex; flex-direction:column; gap:18px;}
   .contact-detail{
-    display:flex; align-items:center; gap:12px;
+    display:flex; align-items:center; gap:14px;
     font-size:0.98rem; font-weight:600;
     color:var(--forest);
   }
-  .contact-detail svg{width:20px; height:20px; flex-shrink:0; color:var(--sage);}
-
-  form{
+  .contact-detail .icon-box{
+    width:38px; height:38px;
+    border-radius:10px;
     background:var(--white);
-    border-radius:var(--radius-card);
-    padding:32px 24px;
     border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .contact-detail svg{width:18px; height:18px; color:var(--sage);}
+
+  .form-card{
+    background:var(--white);
+    border-radius:24px;
+    padding:36px 28px;
+    box-shadow:0 20px 50px rgba(31,61,43,0.1);
+  }
+  .form-card-title{
+    display:flex; align-items:center; gap:8px;
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.3rem;
+    color:var(--forest);
+    margin-bottom:24px;
+  }
+  form{}
+  .field-row{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
   }
   .field{margin-bottom:20px;}
   .field label{
@@ -394,7 +450,8 @@
   @media (min-width:768px){
     .about{grid-template-columns:auto 1fr; gap:56px;}
     .service-grid{grid-template-columns:repeat(3, 1fr);}
-    .contact-grid{grid-template-columns:1fr 1.15fr; gap:60px;}
+    .contact-grid{grid-template-columns:1fr 1.15fr; gap:60px; align-items:start;}
+    .field-row{grid-template-columns:1fr 1fr; gap:0 16px;}
     section{padding:120px 0;}
     .nav .wrap{padding-top:20px; padding-bottom:20px;}
   }
@@ -431,7 +488,8 @@
   <div class="wrap about">
     <div class="about-photo" aria-hidden="true">LB</div>
     <div>
-      <h2>Sobre mí</h2>
+      <span class="eyebrow">SOBRE MÍ</span>
+      <h2>Nutrición con <em>criterio propio</em></h2>
       <p>Soy Laura, licenciada en Nutrición especializada en nutrición clínica y deportiva. Trabajo con personas que quieren mejorar su relación con la comida, rendir mejor en su entrenamiento o resolver una condición de salud puntual, siempre con un enfoque realista y sin dietas mágicas.</p>
       <p>Creo en los planes hechos a medida: cada cuerpo, cada rutina y cada historia son distintas, y el acompañamiento tiene que adaptarse a eso — no al revés.</p>
     </div>
@@ -441,8 +499,9 @@
 <section id="servicios" style="background:var(--white);">
   <div class="wrap">
     <div class="services-head">
-      <h2>Servicios</h2>
-      <p>Tres formas de empezar a cuidar tu alimentación, según en qué punto estés.</p>
+      <span class="eyebrow">SERVICIOS</span>
+      <h2>Tres formas de <em>empezar</em></h2>
+      <p>Elegí el punto de partida según en qué momento estés.</p>
     </div>
     <div class="service-grid">
       <article class="service-card">
@@ -450,21 +509,31 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
         </div>
         <h3>Consulta inicial</h3>
-        <p>Evaluación completa de tus hábitos, historia clínica y objetivos para definir el mejor punto de partida.</p>
+        <ul>
+          <li>Presencial o videollamada</li>
+          <li>Incluye cuestionario previo</li>
+        </ul>
       </article>
       <article class="service-card">
         <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5a2 2 0 0 1 2-2h8l6 6v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M14 3v6h6"/></svg>
         </div>
         <h3>Plan nutricional personalizado</h3>
-        <p>Un plan de alimentación diseñado según tu rutina, tus gustos y tus objetivos, sin restricciones innecesarias.</p>
+        <ul>
+          <li>Revisión semanal incluida</li>
+          <li>Recetas y equivalencias</li>
+          <li>Ajustes continuos</li>
+        </ul>
       </article>
       <article class="service-card">
         <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
         </div>
         <h3>Seguimiento mensual</h3>
-        <p>Ajustes periódicos del plan, control de avances y acompañamiento constante para sostener los resultados en el tiempo.</p>
+        <ul>
+          <li>Soporte por WhatsApp</li>
+          <li>Monitoreo de objetivos</li>
+        </ul>
       </article>
     </div>
   </div>
@@ -473,45 +542,51 @@
 <section id="contacto" class="contact">
   <div class="wrap contact-grid">
     <div class="contact-info">
-      <h2>Empecemos tu consulta</h2>
-      <p>Contame un poco de tu situación y te respondo a la brevedad para coordinar el primer encuentro.</p>
+      <span class="eyebrow">CONTACTO</span>
+      <h2>¿Empezamos <em>tu camino?</em></h2>
+      <p>Completá el formulario o escribime directamente. Respondo en menos de 48 hs hábiles.</p>
       <div class="contact-details">
         <span class="contact-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
           <a href="mailto:laura@nutricionbenitez.com">laura@nutricionbenitez.com</a>
         </span>
         <span class="contact-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2 2a12 12 0 0 0 6 6l2-2 5 2v4a2 2 0 0 1-2 2C10 22 2 14 2 4a2 2 0 0 1 2-2"/></svg>
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-2 2a12 12 0 0 0 6 6l2-2 5 2v4a2 2 0 0 1-2 2C10 22 2 14 2 4a2 2 0 0 1 2-2"/></svg></span>
           <a href="https://wa.me/5491166667777?text=Hola%20Laura%2C%20quiero%20hacer%20una%20consulta" target="_blank" rel="noopener">+54 9 11 6666-7777</a>
         </span>
         <span class="contact-detail">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          <span class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
           <a href="https://instagram.com/laura.nutricion" target="_blank" rel="noopener">@laura.nutricion</a>
         </span>
       </div>
     </div>
 
-    <form id="contact-form" action="https://formspree.io/f/xnpqkbgw" method="POST">
-      <div class="field">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
-      </div>
-      <div class="field">
-        <label for="telefono">Teléfono <span style="font-weight:400; color:var(--ink-soft);">(opcional)</span></label>
-        <input type="tel" id="telefono" name="telefono">
-      </div>
-      <div class="field">
-        <label for="motivo">Motivo de consulta</label>
-        <textarea id="motivo" name="motivo" required></textarea>
-      </div>
-      <button type="submit" class="btn form-submit" id="form-submit-btn">Enviar consulta</button>
-      <p class="form-note">Te respondo en menos de 48hs hábiles.</p>
-      <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
-    </form>
+    <div class="form-card">
+      <p class="form-card-title">Enviame un mensaje</p>
+      <form id="contact-form" action="https://formspree.io/f/xnpqkbgw" method="POST">
+        <div class="field-row">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono <span style="font-weight:400; color:var(--ink-soft);">(opcional)</span></label>
+          <input type="tel" id="telefono" name="telefono" placeholder="+54 9 11 0000-0000">
+        </div>
+        <div class="field">
+          <label for="motivo">Motivo de consulta</label>
+          <textarea id="motivo" name="motivo" placeholder="Contame brevemente qué te gustaría trabajar..." required></textarea>
+        </div>
+        <button type="submit" class="btn form-submit" id="form-submit-btn">Enviar mensaje</button>
+        <p class="form-note">Tu información está segura y nunca se comparte con terceros.</p>
+        <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
 
     <script>
       (function(){
